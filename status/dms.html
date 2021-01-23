@@ -15,34 +15,32 @@
 <script>
 
  function getJSON(url) {
-        var resp ;
-        var xmlHttp ;
+  var resp;
+  var xmlHttp;
+  resp = '';
+  xmlHttp = new XMLHttpRequest();
 
-        resp  = '' ;
-        xmlHttp = new XMLHttpRequest();
-
-        if(xmlHttp != null)
-        {
-            xmlHttp.open( "GET", url, false );
-            xmlHttp.send( null );
-            resp = xmlHttp.responseText;
-        }
-
-        return resp ;
+  if(xmlHttp != null) {
+   xmlHttp.open("GET", url, false);
+   xmlHttp.send(null);
+   resp = xmlHttp.responseText;
+  }
+  return resp;
  }
 
  var obj = JSON.parse(getJSON("https://api.mcsrvstat.us/2/mods.blockhead7360.com:25572"));
  
- var isOnline = obj.online;
+ var online = obj.online;
  
- document.getElementById("status").innerHTML = "<b>DMS 6 is currently " + (isOnline ? "online!" : "offline.") + "</b>";
- document.getElementById("status").style.color = (isOnline ? "green" : "red");
+ document.getElementById("status").innerHTML = "<b>DMS 6 is currently " + (online ? "online!" : "offline.") + "</b>";
+ document.getElementById("status").style.color = (online ? "green" : "red");
  
- var players = obj.players.online;
- var pl = "No players are currently online.";
+ if (online) {
+  var players = obj.players.online;
+  var pl = "No players are currently online.";
  
- if (players == 1) pl = "1 player is currently online: " + obj.players.list[0];
- if (players > 1) {
+  if (players == 1) pl = "1 player is currently online: " + obj.players.list[0];
+  if (players > 1) {
   
   pl = players + " players are currently online: " + obj.players.list[0];
   
@@ -53,6 +51,8 @@
  }
  
  document.getElementById("players").innerHTML = pl;
+  
+ }
  
  
  var ml = "<u>Server Mod List (" + obj.mods.names.length + ")</u><br><br>";
