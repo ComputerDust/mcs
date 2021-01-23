@@ -6,7 +6,10 @@
 </head>
 </body>
 
-<p id="modlist" style="font-family: Arial"></p> 
+<p id="status" style="font-family: Arial;text-align: center"></p>
+<p id="players" style="font-family: Arial;text-align: center"></p>
+
+<p id="modlist" style="font-family: Arial;text-align: center"></p> 
 
 <script>
 
@@ -29,7 +32,28 @@
 
  var obj = JSON.parse(getJSON("https://api.mcsrvstat.us/2/mods.blockhead7360.com:25572"));
  
- var ml = "";
+ var isOnline = obj.online;
+ 
+ document.getElementById("status").innerHTML = "<b>The server is currently " + (isOnline ? "online" : "offline");
+ 
+ var players = obj.players.online;
+ var pl = "No players are currently online.";
+ 
+ if (players == 1) pl = "1 player is currently online: " + obj.players.list[0];
+ if (players > 1) {
+  
+  pl = players + " players are currently online: " + obj.players.list[0];
+  
+  for (var i = 1; i < players; i++) {
+   pl += ", " + obj.players.list[i];
+  }
+  
+ }
+ 
+ document.getElementById("players").innerHTML = pl;
+ 
+ 
+ var ml = "<u>Server Mod List (" + obj.mods.names.length + ")<u><br><br>";
  
  for (var i = 0; i < obj.mods.names.length; i++) {
   
