@@ -6,10 +6,11 @@
 </head>
 </body>
 
+<p><br></p>
 <p id="status" style="font-family: Arial;text-align: center;font-size: 24px"></p>
 <p id="players" style="font-family: Arial;text-align: center; font-size: 16px"></p>
 <p><br><br><br></p>
-<p id="modlist" style="font-family: Arial;text-align: center; font-size: 11px"></p> 
+<p id="modlist" style="font-family: Arial;text-align: center; font-size: 12px"></p> 
 
 <script>
 
@@ -34,7 +35,7 @@
  
  var isOnline = obj.online;
  
- document.getElementById("status").innerHTML = "<b>The server is currently " + (isOnline ? "online" : "offline");
+ document.getElementById("status").innerHTML = "<b>The server is currently " + (isOnline ? "online!" : "offline.");
  document.getElementById("status").style.color = (isOnline ? "green" : "red");
  
  var players = obj.players.online;
