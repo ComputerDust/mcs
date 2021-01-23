@@ -7,7 +7,8 @@
 </body>
 
 <p><br></p>
-<p id="status" style="font-family: Arial;text-align: center;font-size: 32px"></p>
+<p style="font-family: Arial;text-align: center;font-size: 18px">DMS 6 is</p>
+<p id="status" style="font-family: Arial;text-align: center;font-size: 48px"></p>
 <p id="players" style="font-family: Arial;text-align: center; font-size: 18px"></p>
 <p><br><br><br></p>
 <p id="modlist" style="font-family: Arial;text-align: center; font-size: 16px; line-height: 1.75"></p> 
@@ -32,7 +33,7 @@
  
  var online = obj.online;
  
- document.getElementById("status").innerHTML = "<b>DMS 6 is " + (online ? "online!" : "offline.") + "</b>";
+ document.getElementById("status").innerHTML = "<b>" + (online ? "ONLINE" : "OFFLINE") + "</b>";
  document.getElementById("status").style.color = (online ? "green" : "red");
  
  if (online) {
