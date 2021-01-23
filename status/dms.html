@@ -2,12 +2,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Latest DMS 6 Mod List</title>
+<title>DMS 6 Status</title>
 </head>
 </body>
 
-<p id="status" style="font-family: Arial;text-align: center"></p>
-<p id="players" style="font-family: Arial;text-align: center"></p>
+<p id="status" style="font-family: Arial;text-align: center;font-size: 24px"></p>
+<p id="players" style="font-family: Arial;text-align: center; font-size: 16px"></p>
 
 <p id="modlist" style="font-family: Arial;text-align: center"></p> 
 
@@ -35,6 +35,7 @@
  var isOnline = obj.online;
  
  document.getElementById("status").innerHTML = "<b>The server is currently " + (isOnline ? "online" : "offline");
+ document.getElementById("status").style.color = (isOnline ? "green" : "red");
  
  var players = obj.players.online;
  var pl = "No players are currently online.";
@@ -53,7 +54,7 @@
  document.getElementById("players").innerHTML = pl;
  
  
- var ml = "<u>Server Mod List (" + obj.mods.names.length + ")<u><br><br>";
+ var ml = "<u>Server Mod List (" + obj.mods.names.length + ")</u><br><br>";
  
  for (var i = 0; i < obj.mods.names.length; i++) {
   
