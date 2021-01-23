@@ -6,7 +6,7 @@
 </head>
 </body>
 
-<p id="demo"></p> 
+<p id="modlist"></p> 
 
 <script>
 
@@ -25,10 +25,20 @@
         }
 
         return resp ;
-    }
+ }
 
+ var obj = JSON.parse(getJSON("https://api.mcsrvstat.us/2/mods.blockhead7360.com:25572"));
+ 
+ var ml = "";
+ 
+ for (var i = 0; i < obj.mods.names.length; i++) {
+  
+  ml += obj.mods.names[i] + "\n";
+  
+ }
+ 
+ document.getElementById("demo").innerHTML = ml;
 
-document.getElementById("demo").innerHTML = getJSON("https://api.mcsrvstat.us/2/mods.blockhead7360.com:25572");
 </script>
 
 </html>
