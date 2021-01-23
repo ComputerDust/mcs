@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>DMS Latest Mod List</title>
+</head>
+<body style="background-color:black">
+<script src="flapxd.js"></script>
+</body>
+
+<p id="demo"></p> 
+
+<script>
+
+ function getJSON(url) {
+        var resp ;
+        var xmlHttp ;
+
+        resp  = '' ;
+        xmlHttp = new XMLHttpRequest();
+
+        if(xmlHttp != null)
+        {
+            xmlHttp.open( "GET", url, false );
+            xmlHttp.send( null );
+            resp = xmlHttp.responseText;
+        }
+
+        return resp ;
+    }
+
+
+document.getElementById("demo").innerHTML = getJSON("https://api.mcsrvstat.us/2/mods.blockhead7360.com:25572");
+</script>
+
+</html>
