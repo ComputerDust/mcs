@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Dilan MCPS Status</title>
+</head>
+</body>
+
+<p><br></p>
+<p style="font-family: Arial;text-align: center;font-size: 18px;margin: 10px"><b>DMS 6 STATUS</b></p>
+<p id="status" style="font-family: Arial;text-align: center;font-size: 72px;margin: 10px"></p>
+<p id="players" style="font-family: Arial;text-align: center; font-size: 18px;margin: 10px"></p>
+<p><br><br><br></p>
+<p id="modlist" style="font-family: Arial;text-align: center; font-size: 16px; line-height: 1.75"></p> 
+
+<script>
+ 
+ // Imagine inspect elementing to get here (like I inspect elemented your mom lmaooooo)
+ 
+ function getJSON(url) {
+  var resp;
+  var xmlHttp;
+  resp = '';
+  xmlHttp = new XMLHttpRequest();
+
+  if(xmlHttp != null) {
+   xmlHttp.open("GET", url, false);
+   xmlHttp.send(null);
+   resp = xmlHttp.responseText;
+  }
+  return resp;
+ }
+
+ var obj = JSON.parse(getJSON("https://api.mcsrvstat.us/2/mcps.blockhead7360.com"));
+ 
+ var online = obj.online;
+ 
+ document.getElementById("status").innerHTML = "<b>" + (online ? "ONLINE" : "OFFLINE") + "</b>";
+ document.getElementById("status").style.color = (online ? "green" : "red");
+ 
+ if (online) {
+  var players = obj.players.online;
+  var pl = "No players are currently online.";
+ 
+  if (players == 1) pl = "1 player is currently online: " + obj.players.list[0];
+  if (players > 1) {
+  
+  pl = players + " players are currently online: " + obj.players.list[0];
+  
+  for (var i = 1; i < players; i++) {
+   pl += ", " + obj.players.list[i];
+  }
+  
+ }
+ 
+ document.getElementById("players").innerHTML = pl;
+  
+ }
+
+</script>
+
+</html>
