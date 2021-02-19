@@ -48,6 +48,7 @@
  document.getElementById("status").innerHTML = "<b>" + (online ? "ONLINE" : "OFFLINE") + "</b>";
  document.getElementById("status").style.color = (online ? "green" : "red");
  
+ var pl = "";
  if (online) {
   var players = obj.players.online;
   var pl = "No players are currently online.";
@@ -62,10 +63,14 @@
   }
   
  }
- 
- document.getElementById("players").innerHTML = pl;
+  
+ } else {
+  
+  pl = "When the server is online, online players will appear here."
   
  }
+ 
+document.getElementById("players").innerHTML = pl;
 
 </script>
 
